@@ -1,0 +1,92 @@
+version: 2.1
+
+commands:
+  prepare:
+    description: Prepare environment
+    steps:
+      - run:
+          name: Config git info
+          command: |
+            git config --global user.email 'moonlight8978@gmail.com'
+            git config --global user.name 'CircleCI'
+
+      - checkout
+
+      - restore_cache:
+          keys:
+            - node-modules-v1-{{ checksum "yarn.lock" }}
+            - node-modules-v1-
+
+      - run:
+          name: Install npm packages
+          command: yarn install
+
+      - save_cache:
+          paths:
+            - ./node_modules
+          key: node-modules-v1-{{ checksum "yarn.lock" }}
+
+executors:
+  react_app:
+    docker:
+      - image: circleci/node:erbium
+    working_directory: ~/app
+
+jobs:
+  check:
+    executor: react_app
+    steps:
+      - prepare
+
+      - run:
+          name: NodeJS version
+          command: node -v
+
+      - run:
+          name: Yarn version
+          command: yarn -v
+
+  lint:
+    executor: react_app
+    steps:
+      - prepare
+
+      - run:
+          name: Linting and types checking
+          command: |
+            yarn lint
+
+  release:
+    executor: react_app
+    steps:
+      - add_ssh_keys:
+          fingerprints:
+            - b5:fc:a6:cb:f2:3e:71:02:47:97:71:3a:75:00:4c:4c
+
+      - prepare
+
+      - deploy:
+          name: Build and deploy to github.io
+          command: yarn deploy
+
+aliases:
+  ignore_gh_pages: &ignore_gh_pages
+    filters:
+      branches:
+        ignore:
+          - master
+
+workflows:
+  workflow:
+    jobs:
+      - lint:
+          <<: *ignore_gh_pages
+      - check:
+          <<: *ignore_gh_pages
+      - release:
+          requires:
+            - test
+          filters:
+            branches:
+              only:
+                - develop
