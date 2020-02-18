@@ -61,7 +61,7 @@ jobs:
     steps:
       - add_ssh_keys:
           fingerprints:
-            - b5:fc:a6:cb:f2:3e:71:02:47:97:71:3a:75:00:4c:4c
+            - 74:3e:31:1b:15:fe:bc:46:eb:3c:45:28:1a:a8:21:83
 
       - prepare
 
@@ -85,7 +85,8 @@ workflows:
           <<: *ignore_gh_pages
       - release:
           requires:
-            - test
+            - lint
+            - check
           filters:
             branches:
               only:
