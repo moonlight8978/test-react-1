@@ -1,11 +1,7 @@
-import React, { useState } from 'react'
-
-import TextField from './components/text-field'
+import React from 'react'
 
 function App() {
-  const [value, setValue] = useState('')
-
-  return <TextField value={value} onChange={text => setValue(text)} />
+  return <div>Sample</div>
 }
 
 export default App
