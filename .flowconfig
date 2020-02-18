@@ -1,0 +1,47 @@
+[ignore]
+.*/__tests__/.*
+.*/__mocks__/.*
+.*/build/.*
+.*/coverage/.*
+.*/.cloc/.*
+
+[include]
+
+[libs]
+
+[declarations]
+; .*/node_modules/.*
+
+[lints]
+; sketchy-null-number=warn
+; sketchy-null-mixed=warn
+; sketchy-number=warn
+; untyped-type-import=warn
+; nonstrict-import=warn
+; deprecated-type=warn
+; unsafe-getters-setters=warn
+; inexact-spread=warn
+; unnecessary-invariant=warn
+; signature-verification-failure=warn
+; deprecated-utility=error
+
+[options]
+; Extensions
+module.file_ext=.js
+module.file_ext=.jsx
+module.file_ext=.json
+module.file_ext=.css
+module.file_ext=.scss
+
+; CSS modules
+module.name_mapper.extension='css' -> 'empty/object'
+module.name_mapper.extension='scss' -> 'empty/object'
+
+[strict]
+; deprecated-type
+; nonstrict-import
+; sketchy-null
+; unclear-type
+; unsafe-getters-setters
+; untyped-import
+; untyped-type-import

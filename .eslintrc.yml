@@ -1,0 +1,101 @@
+env:
+  browser: true
+  es6: true
+  jest: true
+extends:
+  - airbnb
+  - plugin:prettier/recommended
+  - plugin:flowtype/recommended
+globals:
+  Atomics: readonly
+  SharedArrayBuffer: readonly
+parserOptions:
+  ecmaFeatures:
+    jsx: true
+  ecmaVersion: 2018
+  sourceType: module
+plugins:
+  - react
+  - react-hooks
+  - flowtype
+rules:
+  arrow-body-style: 'off'
+  consistent-return: 'off'
+  no-underscore-dangle:
+    - error
+    - allow:
+        - __REDUX_DEVTOOLS_EXTENSION__
+        - __REDUX_DEVTOOLS_EXTENSION_COMPOSE__
+  no-unused-expressions:
+    - error
+    - allowShortCircuit: true
+  no-unused-vars:
+    - error
+    - args: none
+  import/prefer-default-export: 'off'
+  import/order:
+    - error
+    - groups:
+        - builtin
+        - external
+        - parent
+        - sibling
+        - index
+      newlines-between: always
+  import/no-extraneous-dependencies:
+    - error
+    - devDependencies:
+        - '**/__tests__/*'
+        - '**/__mocks__/*'
+        - '**/*.spec.*'
+        - '**/*.stories.*'
+        - '**/*.config.js'
+        - jest.setup.js
+  react/destructuring-assignment: 'off'
+  react/jsx-filename-extension:
+    - error
+    - extensions:
+        - .jsx
+  react/no-multi-comp: 'off'
+  react/jsx-props-no-spreading: 'off'
+  react/prefer-stateless-function: 'off'
+  react/sort-comp:
+    - error
+    - order:
+        - static-methods
+        - lifecycle
+        - '/^fetch.+$/'
+        - '/^handle.+$/'
+        - everything-else
+        - '/^render.+$/'
+        - render
+      groups:
+        lifecycle:
+          - displayName
+          - props
+          - propTypes
+          - contextTypes
+          - childContextTypes
+          - mixins
+          - statics
+          - defaultProps
+          - state
+          - constructor
+          - getDefaultProps
+          - getInitialState
+          - getChildContext
+          - componentWillMount
+          - componentDidMount
+          - componentWillReceiveProps
+          - shouldComponentUpdate
+          - componentWillUpdate
+          - componentDidUpdate
+          - componentWillUnmount
+  react-hooks/rules-of-hooks: error
+  react-hooks/exhaustive-deps: warn
+  react/state-in-constructor:
+    - error
+    - never
+  react/static-property-placement:
+    - error
+    - static public field
