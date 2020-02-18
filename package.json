@@ -33,10 +33,8 @@
   "scripts": {
     "start": "webpack-dev-server --env development",
     "build": "webpack --env production",
-    "storybook": "start-storybook -p 6006",
     "predeploy": "yarn build",
     "deploy": "gh-pages -d build -b master",
-    "build-storybook": "build-storybook",
     "check": "yarn check --verify-tree --integrity",
     "test:unit": "jest",
     "test:unit:debug": "node --inspect='0.0.0.0:9229' --inspect-brk node_modules/.bin/jest --runInBand",
@@ -54,7 +52,7 @@
     "lint": "npm-run-all prettier:diff stylelint --parallel eslint flow",
     "preloc": "node .cloc/list-files.js . > tmp/clocfiles",
     "loc": "cloc --list-file=tmp/clocfiles --ignored=tmp/clocignore .",
-    "dev": "npm-run-all --print-label --parallel start flow:server storybook"
+    "dev": "npm-run-all --print-label --parallel start flow:server"
   },
   "browserslist": [
     "last 2 Chrome versions",
