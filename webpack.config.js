@@ -70,7 +70,7 @@ module.exports = webpackEnv => {
     output: {
       path: path.resolve(__dirname, 'build'),
       filename: outputName(isEnvProduction, 'js'),
-      publicPath: '/',
+      publicPath: isEnvProduction ? '/test-react-1/' : '/',
     },
     module: {
       rules: [
