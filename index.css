@@ -10,3 +10,17 @@ Copyright (c) Nicolas Gallagher and Jonathan Neal
 
 *{box-sizing:border-box}body{background-color:#fff}
 
+.container-module_container--3kWFe{width:600px;margin:auto}
+
+.text-field-module_textField--2NCCS{display:block;width:100%;transition:all 0.15s ease;border:1px solid #ccc;padding:0.75rem}.text-field-module_textField--2NCCS:focus{outline:none;box-shadow:none;border-color:blue}
+
+.load-button-module_button--tqjQJ{display:flex;margin:auto;border:1px solid #ccc;padding:0.25rem 1rem}.load-button-module_button--tqjQJ.load-button-module_disabled--2rRp1{cursor:not-allowed}
+
+.repo-list-module_container--27lX2{margin-top:1rem}.repo-list-module_header--3uUKr{margin-bottom:0.5rem}.repo-list-module_count--3MD5x{margin-bottom:1rem;display:inline-block}.repo-list-module_list--1gskZ{margin-bottom:1rem}
+
+.dropdown-module_container--FPThR{position:relative}.dropdown-module_content--1TEjZ{min-width:300px;background-color:#fff;max-height:200px;border:1px solid #ccc;overflow-y:auto;box-shadow:1px 1px 5px 0 #ccc}.dropdown-module_content--1TEjZ.dropdown-module_closed--qr6ss{display:none}.dropdown-module_button--1ImAv ~ .dropdown-module_content--1TEjZ{position:absolute;bottom:100%;right:0}
+
+.stargazer-list-module_container--3qgDB{padding:1rem 0}.stargazer-list-module_header--37nLl{margin-top:0;padding:0 1rem}.stargazer-list-module_list--3MNb9{margin-bottom:1rem}.stargazer-list-module_item--2ek-4{padding:0.5rem 1rem;border-top:1px solid #ccc}.stargazer-list-module_item--2ek-4:last-child{border-bottom:1px solid #ccc}.stargazer-list-module_item--2ek-4:hover{background-color:#e8e8e8}
+
+.repo-item-module_container--2Ffmo{padding:1rem;border:1px solid #ccc;display:flex;justify-content:space-between;align-items:center}.repo-item-module_container--2Ffmo:not(:last-child){border-bottom:0}
+
