@@ -4,6 +4,8 @@ import React from 'react'
 import type { Node } from 'react'
 
 import type { Repos, Repo } from '../../domain/models/repo'
+import Loading from '../loading/loading'
+import LoadButton from '../load-button/load-button'
 
 import styles from './repo-list.module.scss'
 
@@ -27,10 +29,12 @@ function RepoList({ repos, renderRepo }: Props) {
       </div>
 
       {repos.metadata.fetched < repos.metadata.total && (
-        <div className={styles.load}>
-          <button type="button">Load more</button>
-        </div>
+        <LoadButton isLoading onClick={() => {}}>
+          Load more
+        </LoadButton>
       )}
+
+      <Loading isLoading size="2x" />
     </div>
   )
 }
