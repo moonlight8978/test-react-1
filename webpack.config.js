@@ -65,7 +65,9 @@ module.exports = webpackEnv => {
           transformPath: mdPathTransformer,
         },
       ]),
-      new MiniCssExtractPlugin(),
+      new MiniCssExtractPlugin({
+        filename: isEnvProduction ? '[name].[hash].css' : '[name].css',
+      }),
     ],
     output: {
       path: path.resolve(__dirname, 'build'),
