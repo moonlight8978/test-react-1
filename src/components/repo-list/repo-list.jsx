@@ -11,10 +11,11 @@ import styles from './repo-list.module.scss'
 
 type Props = {
   repos: Repos,
+  fetch: () => Promise,
   renderRepo: (repo: Repo, index?: number) => Node,
 }
 
-function RepoList({ repos, renderRepo }: Props) {
+function RepoList({ repos, renderRepo, fetch }: Props) {
   return (
     <div className={styles.container}>
       <h4 className={styles.header}>Repositories</h4>
@@ -29,7 +30,7 @@ function RepoList({ repos, renderRepo }: Props) {
       </div>
 
       {repos.metadata.fetched < repos.metadata.total && (
-        <LoadButton isLoading onClick={() => {}}>
+        <LoadButton isLoading onClick={fetch}>
           Load more
         </LoadButton>
       )}
