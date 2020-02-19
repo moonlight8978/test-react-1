@@ -2,14 +2,6 @@
   position: relative;
 }
 
-.button {
-  ~ .content {
-    position: absolute;
-    bottom: 100%;
-    right: 0;
-  }
-}
-
 .content {
   min-width: 300px;
   background-color: #fff;
@@ -20,5 +12,13 @@
 
   &.closed {
     display: none;
+  }
+}
+
+.button {
+  ~ .content {
+    position: absolute;
+    bottom: 100%;
+    right: 0;
   }
 }

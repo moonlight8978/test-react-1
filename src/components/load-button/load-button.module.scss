@@ -1,8 +1,10 @@
 .button {
   display: flex;
   margin: auto;
-  background-color: transparent;
-  box-shadow: none;
   border: 1px solid #ccc;
   padding: 0.25rem 1rem;
+
+  &.disabled {
+    cursor: not-allowed;
+  }
 }

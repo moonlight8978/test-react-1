@@ -2,6 +2,7 @@
 
 import React from 'react'
 import type { Node } from 'react'
+import classnames from 'classnames'
 
 import Loading from '../loading/loading'
 
@@ -18,7 +19,7 @@ function LoadButton({ children, isLoading, onClick }: Props) {
     <div className={styles.container}>
       <button
         type="button"
-        className={styles.button}
+        className={classnames(styles.button, { [styles.disabled]: isLoading })}
         disabled={isLoading}
         onClick={onClick}
       >
