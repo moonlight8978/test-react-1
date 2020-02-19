@@ -94,12 +94,17 @@ Xây dựng 1 ứng dụng web/mobile sử dụng reactjs/react-native có các 
 - Nếu người dùng đó có nhiều hơn 30 repos, có thể load thêm 30 repos tiếp theo bằng cách ấn nút “Load more” ở cuối danh sách
 
 - Không hiện nút “Load more" nếu đã load tất cả repos của người dùng
-  Hiển thị số lượng public repos người dùng đó có, và số repos đã load ở dưới textfield
+
+- Hiển thị số lượng public repos người dùng đó có, và số repos đã load ở dưới textfield
 
 - Hiển thị số stargazers của mỗi repo cạnh tên của repo, có nút “Load stargazers" cho từng repo.
+
 - Liệt kê danh sách 30 stargazers đầu tiên khi ấn vào nút “Load stargazers", nếu repo có nhiều hơn 30 stargazers, hiển thị nút “Load more stargazers" ở cuối danh sách stargazers.
+
 - Có thể xem được stargazers của nhiều hơn 1 repo cùng 1 lúc
+
 - Disable các nút “Load more" và “Load more stargazers" khi đang load dữ liệu, enable lại sau khi load thành công hoặc thất bại
+
 - Hiển thị indicator “Loading" trong các nút “Load more" và “Load more stargazers" sau khi ấn nút và chưa load xong
 
 Nghiên cứu các keyword sau, khuyến khích áp dụng vào việc implement app kể trên:
