@@ -28,11 +28,23 @@ function Dropdown({ children }: Props) {
   )
 }
 
-function DropdownButton({ children }: Props) {
-  const { toggle } = useContext(DropdownContext)
+type DropdownButtonProps = {
+  children: Node,
+  onOpen: (event?: SyntheticEvent<HTMLButtonElement>) => any,
+}
+
+function DropdownButton({ children, onOpen }: DropdownButtonProps) {
+  const { toggle, isOpen } = useContext(DropdownContext)
+
+  const handleClick = event => {
+    if (!isOpen) {
+      onOpen(event)
+    }
+    toggle()
+  }
 
   return (
-    <button type="button" onClick={toggle} className={styles.button}>
+    <button type="button" onClick={handleClick} className={styles.button}>
       {children}
     </button>
   )
