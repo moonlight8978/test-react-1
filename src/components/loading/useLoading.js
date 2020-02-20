@@ -2,8 +2,8 @@
 
 import { useState } from 'react'
 
-export default function useLoading() {
-  const [isLoading, setIsLoading] = useState(true)
+export default function useLoading(defaultLoading: boolean) {
+  const [isLoading, setIsLoading] = useState(defaultLoading)
 
   const load = () => setIsLoading(true)
   const complete = () => setIsLoading(false)

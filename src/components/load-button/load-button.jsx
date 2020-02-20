@@ -24,7 +24,7 @@ function LoadButton({ children, isLoading, onClick }: Props) {
         onClick={onClick}
       >
         {children}
-        <Loading isLoading />
+        <Loading isLoading={isLoading} />
       </button>
     </div>
   )
