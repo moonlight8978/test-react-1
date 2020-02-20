@@ -1,1 +1,1 @@
-export { paths } from './paths'
+export { default as pagination } from './pagination'

@@ -1,7 +1,6 @@
 // @flow
 
 import React, { useState } from 'react'
-import axios from 'axios'
 
 import Container from '../components/container'
 import TextField from '../components/text-field'
@@ -12,6 +11,8 @@ import Error from '../components/error'
 import { useLoadableList } from '../components/loadable-list'
 import { parseRepos } from '../domain/models/repo'
 import { parseUser } from '../domain/models/user'
+import { RepoApi, UserApi } from '../api/client'
+import { pagination } from '../config'
 
 import styles from './home.module.scss'
 
@@ -25,12 +26,8 @@ function Home() {
   const provider = {
     fetch: async () => {
       const [userRepos, user] = await Promise.all([
-        axios
-          .get(`https://api.github.com/users/${username}/repos`)
-          .then(response => parseRepos(response.data)),
-        axios
-          .get(`https://api.github.com/users/${username}`)
-          .then(response => parseUser(response.data)),
+        RepoApi.index(username, 1).then(response => parseRepos(response.data)),
+        UserApi.show(username).then(response => parseUser(response.data)),
       ])
       return {
         data: userRepos,
@@ -41,13 +38,13 @@ function Home() {
       }
     },
     fetchMore: async page => {
-      const userRepos = await axios
-        .get(`https://api.github.com/users/${username}/repos?page=${page}`)
-        .then(response => parseRepos(response.data))
+      const userRepos = await RepoApi.index(username, page).then(response =>
+        parseRepos(response.data)
+      )
       return {
         data: userRepos,
         metadata: {
-          fetched: (page - 1) * 30 + userRepos.length,
+          fetched: (page - 1) * pagination.PER_PAGE + userRepos.length,
         },
       }
     },
