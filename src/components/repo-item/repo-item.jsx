@@ -2,7 +2,6 @@
 
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import axios from 'axios'
 
 import type { Repo } from '../../domain/models/repo'
 import { parseStargazers } from '../../domain/models/repo'
@@ -10,6 +9,8 @@ import Dropdown from '../dropdown/dropdown'
 import Error from '../error'
 import StargazerList from '../stargazer-list/stargazer-list'
 import { useLoadableList } from '../loadable-list'
+import { pagination } from '../../config'
+import { StargazerApi } from '../../api/client'
 
 import styles from './repo-item.module.scss'
 
@@ -26,9 +27,11 @@ function RepoItem({ repo, index }: Props) {
 
   const provider = {
     fetch: async () => {
-      const repoStargazers = await axios
-        .get(`https://api.github.com/repos/${repo.fullName}/stargazers`)
-        .then(response => parseStargazers(response.data))
+      const repoStargazers = await StargazerApi.index(
+        repo.owner.username,
+        repo.name,
+        1
+      ).then(response => parseStargazers(response.data))
       return {
         data: repoStargazers,
         metadata: {
@@ -38,15 +41,15 @@ function RepoItem({ repo, index }: Props) {
       }
     },
     fetchMore: async page => {
-      const repoStargazers = await axios
-        .get(
-          `https://api.github.com/repos/${repo.fullName}/stargazers?page=${page}`
-        )
-        .then(response => parseStargazers(response.data))
+      const repoStargazers = await StargazerApi.index(
+        repo.owner.username,
+        repo.name,
+        page
+      ).then(response => parseStargazers(response.data))
       return {
         data: repoStargazers,
         metadata: {
-          fetched: (page - 1) * 30 + repoStargazers.length,
+          fetched: (page - 1) * pagination.PER_PAGE + repoStargazers.length,
         },
       }
     },
