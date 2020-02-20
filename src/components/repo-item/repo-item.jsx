@@ -9,7 +9,7 @@ import { parseStargazers } from '../../domain/models/repo'
 import Dropdown from '../dropdown/dropdown'
 import Error from '../error'
 import StargazerList from '../stargazer-list/stargazer-list'
-import useLoadableList from '../loadable-list/use-loadable-list'
+import { useLoadableList } from '../loadable-list'
 
 import styles from './repo-item.module.scss'
 

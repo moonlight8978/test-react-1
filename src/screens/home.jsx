@@ -9,7 +9,7 @@ import RepoList from '../components/repo-list'
 import RepoItem from '../components/repo-item'
 import Form from '../components/form'
 import Error from '../components/error'
-import useLoadableList from '../components/loadable-list/use-loadable-list'
+import { useLoadableList } from '../components/loadable-list'
 import { parseRepos } from '../domain/models/repo'
 import { parseUser } from '../domain/models/user'
 
